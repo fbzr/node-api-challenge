@@ -23,7 +23,7 @@ const Actions = () => {
             <Card>
                 <CardContent>
                     <Typography variant='h5'>{action.description}</Typography>
-                    <Typography variant='p'>{action.notes}</Typography>
+                    <Typography variant='paragraph'>{action.notes}</Typography>
                 </CardContent>
             </Card>
         ))}

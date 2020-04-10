@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core';
 // crud operations
 import projectsCrud from './crud/projects';
 // components
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <>
+      <CssBaseline />
       <Route exact path='/'>
         <Projects 
           projects={projects}
