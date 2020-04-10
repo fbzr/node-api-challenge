@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
     const { project_id, description, notes } = req.body;
-    if ((!project_id && !req.project.id) || !description || !notes) {
+    if ((!project_id && !req.project) || !description || !notes) {
         return res.status(400).json({ message: 'Missing required field' });
     }
 

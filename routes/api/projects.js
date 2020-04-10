@@ -67,4 +67,42 @@ router.put('/:id', verifyProjectFields, async (req, res, next) => {
     }
 });
 
+// @route   GET /api/projects/:id/actions
+// @desc    Return an array of actions of a project specified by ID parameter
+router.get('/:id/actions', async (req, res, next) => {
+    try {
+        const actions = await projectsDb.getProjectActions(req.project.id);
+        res.json(actions);
+    } catch(err) {
+        next(err);
+    }
+});
+
+// @route   GET /api/projects/:id/actions/:actionId
+// @desc    Return a project's action specified by actionId param
+router.get('/:id/actions/:actionId', verifyActionId, async (req, res, next) => {
+    try {
+        if(req.project.id !== req.action.project_id) {
+            return res.status(400).json({ message: 'Action\'s project ID does not match with project selected' });
+        }
+        res.json(req.action);
+    } catch(err) {
+        next(err);
+    }
+});
+
+// @route   POST /api/projects/:id/actions/
+// @desc    Add a new action to a project
+router.post('/:id/actions/', verifyActionFields, async (req, res, next) => {
+    try {
+        const action = await actionsDb.insert({
+            ...req.body,
+            project_id: req.project.id
+        });
+        res.status(201).json(action);
+    } catch(err) {
+        next(err);
+    }
+});
+
 module.exports = router;
