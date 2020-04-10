@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import MaterialTable from 'material-table';
 // crud operations
 import projectsCrud from '../crud/projects';
-// components
-import Actions from '../components/Actions';
+
 
 const Projects = ({ projects, addProject, editProject, deleteProject }) => {
-    const [actions, setActions] = useState([]);
+    const { push } = useHistory();
     const [table, setTable] = useState({
         columns: [
             { title: 'Name', field: 'name' },
@@ -30,8 +30,7 @@ const Projects = ({ projects, addProject, editProject, deleteProject }) => {
                 columns={table.columns}
                 data={table.data}
                 onRowClick={async (e, data) => {
-                    const actions = await projectsCrud.getActions(data.id);
-                    setActions(actions);
+                    push(`/projects/${data.id}`);
                 }}
                 editable={{
                     onRowAdd: newData =>
@@ -60,7 +59,6 @@ const Projects = ({ projects, addProject, editProject, deleteProject }) => {
                         })
                 }}
             />
-            <Actions actions={actions} />
         </div>
     )
 }

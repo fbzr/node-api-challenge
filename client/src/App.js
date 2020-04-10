@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom';
 // crud operations
 import projectsCrud from './crud/projects';
 // components
 import Projects from './components/Projects';
+import Actions from './components/Actions';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -34,12 +36,17 @@ function App() {
 
   return (
     <>
-      <Projects 
-        projects={projects}
-        addProject={addProject}
-        editProject={editProject}
-        deleteProject={deleteProject}
-      />
+      <Route exact path='/'>
+        <Projects 
+          projects={projects}
+          addProject={addProject}
+          editProject={editProject}
+          deleteProject={deleteProject}
+        />
+      </Route>
+      <Route exact path='/projects/:id'>
+        <Actions />
+      </Route>
     </>
   );
 }
