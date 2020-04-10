@@ -20,10 +20,10 @@ const Actions = () => {
         <>
         <Typography variant='h2'>{project.name}</Typography>
         {actions.map(action => (
-            <Card>
+            <Card key={action.id}>
                 <CardContent>
                     <Typography variant='h5'>{action.description}</Typography>
-                    <Typography variant='paragraph'>{action.notes}</Typography>
+                    <Typography variant='body1'>{action.notes}</Typography>
                 </CardContent>
             </Card>
         ))}

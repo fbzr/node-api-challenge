@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import MaterialTable from 'material-table';
-// crud operations
-import projectsCrud from '../crud/projects';
-
 
 const Projects = ({ projects, addProject, editProject, deleteProject }) => {
     const { push } = useHistory();
