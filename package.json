@@ -6,7 +6,9 @@
   "scripts": {
     "db:seed": "knex seed:run",
     "server": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/LambdaSchool/node-api-challenge#readme",
   "dependencies": {
+    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "helmet": "^3.22.0",
     "knex": "^0.20.13",
