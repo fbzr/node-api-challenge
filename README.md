@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    - Custom middleware and error handling middleware
+
 - [ ] Describe Middleware?
+
+    - Middlewares are pieces of code used to extend the functionality of express
 
 - [ ] Describe a Resource?
 
+    - Resources are objects that, in RESTful API's, can be managed by specific Url's
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+    - A success status code
+
 - [ ] How can we partition our application into sub-applications?
+
+    - Creating different routes files for different resources
 
 ## Minimum Viable Product
 
