@@ -12,3 +12,26 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const errorMiddleware = require('./middleware/error');
+
+const server = express();
+// middlewares
+server.use(helmet());
+server.use(morgan('[:date[web]] - :method :url :status :res[content-length] - :response-time ms'));
+server.use(express.json());
+server.use(cors());
+
+// routes
+server.use('/api/projects', require('./routes/api/projects'));
+server.use('/api/actions', require('./routes/api/actions'));
+
+// error middleware
+server.use(errorMiddleware);
+
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
